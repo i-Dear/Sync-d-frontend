@@ -44,7 +44,7 @@ const InviteModal = () => {
     try {
       setModalState(false);
 
-      await fetch("https://syncd-backend.dev.i-dear.org/v1/project/invite", {
+      await fetch("http://backend.test.witt.kr/project/invite", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

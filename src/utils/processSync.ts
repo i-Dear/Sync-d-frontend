@@ -29,7 +29,7 @@ export const fetchScenario = async (
 
   try {
     const result = await fetch(
-      "https://syncd-backend.dev.i-dear.org/v1/project/userstory",
+      "http://backend.test.witt.kr/project/userstory",
       {
         method: "POST",
         headers: {
@@ -107,16 +107,13 @@ export const fetchSyncedData = async (
     formData.append("epics", JSON.stringify(data));
   }
   try {
-    const response = await fetch(
-      "https://syncd-backend.dev.i-dear.org/v1/project/sync",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-        body: formData,
+    const response = await fetch("http://backend.test.witt.kr/project/sync", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
       },
-    );
+      body: formData,
+    });
     console.log("response", response);
   } catch (error) {
     console.log("error", error);

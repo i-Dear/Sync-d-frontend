@@ -18,16 +18,13 @@ import {
 
 const client = createClient({
   authEndpoint: async () => {
-    const response = await fetch(
-      "https://syncd-backend.i-dear.org/v1/room/auth",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
+    const response = await fetch("http://backend.test.witt.kr/v1/room/auth", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
       },
-    );
+    });
 
     return await response.json();
   },

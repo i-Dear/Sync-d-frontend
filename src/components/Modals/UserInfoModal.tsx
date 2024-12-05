@@ -76,7 +76,7 @@ const UserInfoModal = () => {
       const formData = new FormData();
       formData.append("name", userName);
       contentImage && formData.append("img", contentImage);
-      await fetch("https://syncd-backend.dev.i-dear.org/v1/user/update", {
+      await fetch("http://backend.test.witt.kr/user/update", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,

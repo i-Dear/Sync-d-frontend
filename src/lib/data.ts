@@ -2,19 +2,16 @@ import { CoreDetail, Epic, PersonaInfo } from "./types";
 
 export const getUserInfo = async (token: string) => {
   try {
-    const response = await fetch(
-      "https://syncd-backend.dev.i-dear.org/v1/user/info",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        next: {
-          tags: ["userInfo"],
-        },
+    const response = await fetch("http://backend.test.witt.kr/user/info", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    );
+      next: {
+        tags: ["userInfo"],
+      },
+    });
 
     if (!response.ok) {
       throw new Error("유저 정보 조회에 실패했습니다.");
@@ -31,20 +28,17 @@ export const getUserInfo = async (token: string) => {
 
 export const deleteProject = async (token: string, projectId: string) => {
   try {
-    const response = await fetch(
-      `https://syncd-backend.dev.i-dear.org/v1/project/delete`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          projectId,
-        }),
+    const response = await fetch(`http://backend.test.witt.kr/project/delete`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-    );
+      body: JSON.stringify({
+        projectId,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error("프로젝트 삭제에 실패했습니다.");
@@ -119,7 +113,7 @@ export const updateProgress = async (
 
   console.log("formData Contents", Array.from(formData.entries()));
 
-  fetch(`https://syncd-backend.dev.i-dear.org/v1/project/sync`, {
+  fetch(`http://backend.test.witt.kr/project/sync`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -143,20 +137,17 @@ export const getResult = async (
   projectId: string,
 ): Promise<Result> => {
   try {
-    const response = await fetch(
-      `https://syncd-backend.dev.i-dear.org/v1/project/result`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          projectId,
-        }),
+    const response = await fetch(`http://backend.test.witt.kr/project/result`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-    );
+      body: JSON.stringify({
+        projectId,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error("프로젝트 결과 조회에 실패했습니다.");

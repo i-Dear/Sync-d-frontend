@@ -48,7 +48,7 @@ const CreateProjectModal = () => {
         formData.append("userEmails", email);
       });
 
-      await fetch("https://syncd-backend.dev.i-dear.org/v1/project/create", {
+      await fetch("http://backend.test.witt.kr/project/create", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
